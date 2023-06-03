@@ -1,0 +1,42 @@
+<div class="container mt-5">    
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2" >
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">Notas</span>
+                    <button class="btn btn-success float-end" routerLink="/crear-nota">Nuevo</button>
+                    <button class="btn btn-info float-start" routerLink="/info-proyecto">Info</button>
+                    <table *ngIf="listNotas.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nota</th>
+                            <th scope="col">Tarea</th>
+                            <th scope="col">Check</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let nota of listNotas">
+                            <td>{{nota.titulo}}</td>
+                            <td>{{nota.contenido}}</td>
+                            <td><input type="checkbox" id="cbox2" value="second_checkbox"></td>
+                            <td> 
+                                
+                              <a [routerLink]="['/editar-nota', nota._id]" routerLinkActive="active">
+                                <i class="fas fa-edit text-primary"></i>
+                              </a>                              
+                                <span (click)="eliminarNota(nota._id)">
+                                  <i class="fas fa-trash text-danger"></i>
+                                </span>
+                                
+                               
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 *ngIf="listNotas.length == 0">No hay productos para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
